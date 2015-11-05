@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Piano Master</title>
+        <script src="phaser.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+
+        function preload () {
+            //load images for the screen
+            game.load.image('star', 'assets/star.png');
+            game.load.image('piano', 'assets/piano.png');
+
+            //select sounds to preload (template)
+            // game.load.audio('c', 'assets/audio/piano/c.mp3')
+
+        }
+
+        function create () {
+
+            game.add.sprite(0, 0, 'star');
+            game.add.sprite(175, 250, 'piano');
+
+        }
+
+        function update () {
+
+        }
+
+    };
+
+    </script>
+
+    </body>
+</html>
