@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Piano Master</title>
-        <script src="phaser.min.js"></script>
+        <script src="phaser.js"></script>
     </head>
     <body>
 
@@ -11,28 +11,73 @@
 
     window.onload = function() {
 
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
 
-        function preload () {
-            //load images for the screen
-            game.load.image('star', 'assets/star.png');
-            game.load.image('piano', 'assets/piano.png');
+        function preload() {
 
-            //select sounds to preload (template)
-            // game.load.audio('c', 'assets/audio/piano/c.mp3')
+            game.load.audio('piano_c', 'assets/audio/piano/c.mp3');
 
+        } 
+        
+        var piano_c; 
+        
+        var text; 
+        
+        var text1; 
+
+        function create() {
+            
+            game.stage.backgroundColor = '#414040'; 
+            
+            var style = { font: "65px Arial", fill: "#52bace", align: "center" };
+    		text = game.add.text(game.world.centerX, 100, "decoding", style);
+    		text.anchor.set(0.5);
+            
+            piano_c = game.add.audio('piano_c'); 
+            
+           game.sound.setDecodedCallback([piano_c], start, this);  
+
+        }  
+        
+        var keys;
+        
+        function start() {
+    	
+    		text.text = 'Press A for the note C'; 
+    		
+    		var style = { font: "48px Arial", fill: "#cdba52", align: "center" }; 
+    		
+    		text1 = game.add.text(game.world.centerX, 250, "Not Playing", style); 
+    		text1.anchor.set(0.5); 
+    		
+    		piano_c.onStop.add(soundStopped, this); 
+    		
+    		keys = game.input.keyboard.addKeys({ piano_c: Phaser.Keyboard.A });  
+    		
+    		keys.piano_c.onDown.add(playFx, this); 
+    	    
+        } 
+        
+        function playFx(key) {
+        	
+        	switch (key.keyCode) 
+        	{ 
+        		case Phaser.Keyboard.A: 
+        			text1.text = "Playing C"; 
+        			piano_c.play(); 
+        			break; 
+        	
+        	}
+        } 
+        
+        function soundStopped(sound) {
+        	
+        	if (sound == piano_c) 
+        	{ 
+        		text1.text = "Played C"; 
+        	}
         }
-
-        function create () {
-
-            game.add.sprite(0, 0, 'star');
-            game.add.sprite(175, 250, 'piano');
-
-        }
-
-        function update () {
-
-        }
+    
 
     };
 
