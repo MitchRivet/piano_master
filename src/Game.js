@@ -19,7 +19,7 @@ PianoMaster.Game = function(game){
 						
 						this.physics.arcade.gravity.y = 200; 
 						
-						this.add.sprite(70, 660, 'keyboard'); 
+						this.add.sprite(0, 640, 'keyboard'); 
 						
 						this._spawnNoteTimer = 0; 
 						
@@ -45,8 +45,8 @@ PianoMaster.Game = function(game){
 		PianoMaster.item = {
 			spawnNote: function(game){
 			
-				var dropPos = 72; 
-				var dropOffset = 21; 
+				var dropPos = 615; 
+				var dropOffset = -21; 
 				var note = game.add.sprite(dropPos, dropOffset, 'note');  
 				
 				game.physics.enable(note, Phaser.Physics.ARCADE); 
