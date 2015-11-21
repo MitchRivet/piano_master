@@ -14,7 +14,10 @@ PianoMaster.Preloader = function(game) {
 				this.load.image('keyboard', '../assets/img/keyboard.png'); 
 				
 				this.load.spritesheet('note', '../assets/img/note.png', 82, 98); 
-				this.load.spritesheet('button-start', '../assets/img/button-start.png', 401, 143); 
+				this.load.spritesheet('button-start', '../assets/img/button-start.png', 401, 143);  
+				
+				this.load.tilemap('test', '../assets/levels/test6.json', null, Phaser.Tilemap.TILED_JSON); 
+				this.load.image('tiles', '../assets/UIpack/Spritesheet/greenSheet.png'); 
 				
 				}, 
 				

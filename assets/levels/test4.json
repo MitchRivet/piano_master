@@ -1,0 +1,44 @@
+{ "height":40,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJzt1jEKAAAIAsBW\/\/\/hdlcVAhNaD9uc0QOD0WLBbLmiWqBTc+m397q8hNnmJcw2L2G+d89s8xLmd\/Sa7Lo2HW\/EBVxWAbo=",
+         "encoding":"base64",
+         "height":40,
+         "name":"layer",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":20,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/fantasy-tileset.png",
+         "imageheight":832,
+         "imagewidth":256,
+         "margin":0,
+         "name":"fantasy-tileset",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":208,
+         "tileheight":32,
+         "tilewidth":32
+        }],
+ "tilewidth":32,
+ "version":1,
+ "width":20
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Piano Master Tilemap Test</title>
+        <script src="phaser.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+	var game = new Phaser.Game(544, 544, Phaser.CANVAS, 'game', { preload: preload, create: create});
+
+	function preload() { 
+	
+	this.game.load.tilemap('test3', 'assets/levels/test3.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.image('TestTileSet', 'assets/fantasy-tileset.png'); 
+    }
+    
+    var map;
+	var tileset;
+	var layer; 
+	
+	function create() {
+
+        map = game.add.tilemap('test3', 32, 32);
+        map.addTilesetImage('TestTileSet', 'TestTileSet');
+        
+        layer = map.createLayer('TestLayer');
+        // layer.resizeWorld();
+//         layer.wrap = true;
+//         this.cursors = this.game.input.keyboard.createCursorKeys();
+        
+    }
+   
+
+
+};
+
+
+    </script>
+
+    </body>
+</html>

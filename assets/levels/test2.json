@@ -1,0 +1,44 @@
+{ "height":100,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJztmFEKgCAQBb2L979j\/7HhtvvCwd5AHwmNI\/khjvHMDN7vYytm8GTmqlJpXLnIbVSXytel2pLdt9l5q44Oin+ws6G7jwjrt0PvIDRQHIQGksOe\/3qMMcYYw4V6b6HyqM7CGU90T\/GmgXBu3\/39KQ12nO1QeWgtpB61h9T05bpUd+wXWbMPCw==",
+         "encoding":"base64",
+         "height":100,
+         "name":"test2",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":17,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/UIpack\/Spritesheet\/blueSheet.png",
+         "imageheight":256,
+         "imagewidth":512,
+         "margin":0,
+         "name":"blueSheet",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":128,
+         "tileheight":32,
+         "tilewidth":32
+        }],
+ "tilewidth":32,
+ "version":1,
+ "width":17
+}
