@@ -3,8 +3,10 @@ PianoMaster.Game = function(game){
 		// define variables for Piano Master
 		
 		this._noteGroup = null; 
-		this._spawnNoteTimer = 0;  
-		
+		this._spawnNoteTimer = 0; 
+
+		var keyboard; 
+		var camera; 
 		var cKey; 
 		var map; 
 		var backgroundlayer; 
@@ -12,6 +14,9 @@ PianoMaster.Game = function(game){
 		}; 
 		
 		PianoMaster.Game.prototype = {
+				
+				
+				
 				create: function() {
 						
 				// 		cKey = game.input.keyboard.addKey(Phaser.Keyboard.A); 
@@ -20,33 +25,40 @@ PianoMaster.Game = function(game){
 // 						
 // 						this.physics.arcade.gravity.y = 200; 
 						
-						this.map = this.game.add.tilemap('test'); 
-						this.map.addTilesetImage('tiles', 'tiles'); 
+						this.map = this.game.add.tilemap('fur_elise'); 
+						this.map.addTilesetImage('blueSheet', 'tiles'); 
 				
-						this.backgroundlayer = this.map.createLayer('layer'); 
+						this.backgroundlayer = this.map.createLayer('layer1'); 
 						this.backgroundlayer.resizeWorld(); 
+						
+						this.camera.y = 6400; 
 // 						layer.wrap = true; 
 						
-						this.add.sprite(0, 640, 'keyboard'); 
+						keyboard = this.add.sprite(0, 640, 'keyboard'); 
+						keyboard.fixedToCamera = true; 
 						
 						// this._spawnNoteTimer = 0; 
 // 						
 // 						this._noteGroup = this.add.group(); 
 // 						
 // 						PianoMaster.item.spawnNote(this); 
-					}  
+					},  
 					
-			// 	update: function() {
-// 				
-// 				this._spawnNoteTimer += this.time.elapsed; 
+	update: function() {
+				
+				// this._spawnNoteTimer += this.time.elapsed; 
 // 				
 // 				if(this._spawnNoteTimer > 1000) {
 // 						
 // 						this._spawnNoteTimer = 0; 
 // 						
 // 						PianoMaster.item.spawnNote(this); 
-// 					} 
-// 				} 
+// 					}  
+				
+				
+				
+				this.camera.y -= 1; 
+				} 
 				
 		}; 
 		
