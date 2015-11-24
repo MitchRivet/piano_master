@@ -9,7 +9,8 @@ PianoMaster.Game = function(game){
 		var camera; 
 		var cKey; 
 		var map; 
-		var backgroundlayer; 
+		var backgroundlayer;  
+		var line; 
 		
 		}; 
 		
@@ -33,6 +34,9 @@ PianoMaster.Game = function(game){
 						
 						this.camera.y = 6400; 
 // 						layer.wrap = true; 
+						
+						line = this.add.sprite(0, 400, 'line'); 
+						line.fixedToCamera = true; 
 						
 						keyboard = this.add.sprite(0, 640, 'keyboard'); 
 						keyboard.fixedToCamera = true; 
