@@ -2,8 +2,6 @@ PianoMaster.Game = function(game){
 		
 		// define variables for Piano Master
 		
-		this._noteGroup = null; 
-		this._spawnNoteTimer = 0; 
 
 		var keyboard; 
 		var camera; 
@@ -20,46 +18,28 @@ PianoMaster.Game = function(game){
 				
 				create: function() {
 						
-				// 		cKey = game.input.keyboard.addKey(Phaser.Keyboard.A); 
-// 						cKey.onDown.
-					// 	this.physics.startSystem(Phaser.Physics.ARCADE); 
-// 						
-// 						this.physics.arcade.gravity.y = 200; 
+
 						
 						this.map = this.game.add.tilemap('fur_elise'); 
-						this.map.addTilesetImage('blueSheet', 'tiles'); 
+						this.map.addTilesetImage('blueSheet', 'blue_tiles'); 
+						this.map.addTilesetImage('greenSheet', 'green_tiles'); 
 				
-						this.backgroundlayer = this.map.createLayer('layer1'); 
+						this.backgroundlayer = this.map.createLayer('notes'); 
 						this.backgroundlayer.resizeWorld(); 
 						
 						this.camera.y = 6400; 
 // 						layer.wrap = true; 
 						
-						line = this.add.sprite(0, 400, 'line'); 
+						line = this.add.sprite(0, 352, 'line'); 
 						line.fixedToCamera = true; 
 						
 						keyboard = this.add.sprite(0, 640, 'keyboard'); 
 						keyboard.fixedToCamera = true; 
 						
-						// this._spawnNoteTimer = 0; 
-// 						
-// 						this._noteGroup = this.add.group(); 
-// 						
-// 						PianoMaster.item.spawnNote(this); 
+
 					},  
 					
 	update: function() {
-				
-				// this._spawnNoteTimer += this.time.elapsed; 
-// 				
-// 				if(this._spawnNoteTimer > 1000) {
-// 						
-// 						this._spawnNoteTimer = 0; 
-// 						
-// 						PianoMaster.item.spawnNote(this); 
-// 					}  
-				
-				
 				
 				this.camera.y -= 1; 
 				} 
