@@ -68,18 +68,16 @@ PianoMaster.Game = function(game){
 						controls.cKey.onDown.add(controller, this);
 
 
-						//for some reason, i am not able to draw notes when the keyboard is pressed
-						//which method should I use? puttile or fill?
-						//can I not run a map altering method here?
-						//am i not correctly accessing the tile id?
-						//was put tile working and i'm just not able to see it?
+						//so i realized that put tile uses tile grid position, not x and y pixels
+						//what I need is a method to get the y location of the current line
+						//tiles will always be snapped to certain grid columns
 						function controller(key)
 						{
 								switch (key.keyCode)
 							{
 								case Phaser.Keyboard.A:
 								cKey.play();
-								newNote = this.map.putTile(1, 5, 175, 'notes');
+								newNote = this.map.putTile(1, 2, notes.getTileY(line.y), 'notes');
 								console.log(newNote);
 								break;
 
@@ -96,11 +94,7 @@ PianoMaster.Game = function(game){
 
 						}
 
-						//okay, what do we want to do first? we want to be able to just add a green tile.
-						//no conditions. just add in a green tile above where the cKey should be.
-						//eventually, we want this locked to the grid somehow, at least my original idea was by having a yellow, green, red layer underneath the note layer
-						//see if you can switch layers only at one tile. might not work though.
-						//you can have the user add a very opaque tile wherever they press, and uncover the layer of their score for when line is touching the tile
+					console.log(notes.getTileY(line.y));
 					},
 
 			update: function()
@@ -112,6 +106,7 @@ PianoMaster.Game = function(game){
 
 
 			}
+
 
 
 		};
