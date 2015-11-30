@@ -8,9 +8,15 @@ PianoMaster.Game = function(game){
 		var cKey;
 		var map;
 		var backgroundlayer;
+		var toplayer;
 		var line;
 		var controls;
 
+		var notes;
+		var success;
+		var backgroundlayerkey;
+		var toplayerkey;
+		var currentlayer;
 		};
 
 		PianoMaster.Game.prototype = {
@@ -24,8 +30,8 @@ PianoMaster.Game = function(game){
 						this.map.addTilesetImage('greenSheet', 'green_tiles');
 
 						//create the layers, do I load one or the other first?
-						this.backgroundlayer = this.map.createLayer('success');
-						this.toplayer = this.map.createLayer('notes');
+						success = this.backgroundlayer = this.map.createLayer('success');
+						notes = this.toplayer = this.map.createLayer('notes');
 						this.backgroundlayer.resizeWorld();
 
 						//set the camera position, starting at the bottom of the tile map, not the window
@@ -44,21 +50,45 @@ PianoMaster.Game = function(game){
 						cKey = this.add.audio('cKey');
 						cKey.allowMultiple = true;
 
+						//show the different note layers, test
+						toplayerkey = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
+						backgroundlayerkey = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
+
+						toplayerkey.onDown.add(controller, this);
+						backgroundlayerkey.onDown.add(controller, this);
+
 						//link the variable cKey to the keyboard input
 						controls = this.input.keyboard.addKeys({ cKey: Phaser.Keyboard.A });
 
-						controls.cKey.onDown.add(playFx, this);
+						controls.cKey.onDown.add(controller, this);
 
-						function playFx(key)
-					{
-						switch (key.keyCode)
-					{
-						case Phaser.Keyboard.A:
-							cKey.play();
+						//when cKey is pressed, I want to add a tile to the map that will roll with the camera12
+						function controller(key)
+						{
+								switch (key.keyCode)
+							{
+								case Phaser.Keyboard.A:
+								cKey.play();
+								break;
+
+								case Phaser.Keyboard.ONE:
+								notes.alpha = 1;
+								success.alpha = 0;
+								break;
+
+								case Phaser.Keyboard.TWO:
+									notes.alpha = 0;
+									success.alpha = 1;
+								break;
+							}
+
 						}
 
-					}
-					
+						//okay, what do we want to do first? we want to be able to just add a green tile.
+						//no conditions. just add in a green tile above where the cKey should be.
+						//eventually, we want this locked to the grid somehow, at least my original idea was by having a yellow, green, red layer underneath the note layer
+						//see if you can switch layers only at one tile. might not work though.
+						//you can have the user add a very opaque tile wherever they press, and uncover the layer of their score for when line is touching the tile
 					},
 
 			update: function()
@@ -73,7 +103,7 @@ PianoMaster.Game = function(game){
 
 		};
 
-		PianoMaster.item = {
+		// PianoMaster.item = {
 			// playFx: function (key) {
 			// 	//switch is very similar to an if statement
 			// 	switch (key.keyCode)
@@ -84,8 +114,6 @@ PianoMaster.Game = function(game){
 			//
 			// 	}
 			// }
-// 			//function we have to play the sound associated with our controls
-// 			//may have to move this in to the code below
 //
 // // 			spawnNote: function(game){
 // //
@@ -109,4 +137,4 @@ PianoMaster.Game = function(game){
 // // 			removeNote: function(note) {
 // // 				note.kill();
 // // 				},
-	};
+	// };
