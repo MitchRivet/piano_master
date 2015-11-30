@@ -46,23 +46,28 @@ PianoMaster.Game = function(game){
 
 						//link the variable cKey to the keyboard input
 						controls = this.input.keyboard.addKeys({ cKey: Phaser.Keyboard.A });
-						console.log(controls);
+
+						controls.cKey.onDown.add(playFx, this);
+
+						function playFx(key)
+					{
+						switch (key.keyCode)
+					{
+						case Phaser.Keyboard.A:
+							cKey.play();
+						}
+
+					}
+					
 					},
 
-			// start: function() {
-			// 				//when the cKey is pressed, run the function playFx
-			// 				controls.cKey.onDown.add(playFx, this);
-			// 		},
-
-			update: function() {
+			update: function()
+			{
 				//tell the camera to scroll up. will have to findout what these units are to sync with audio.
 				//seems like its scrolling one tile per sec
 				this.camera.y -= 1;
-				controls.cKey.onDown.add(playFx, this);
 
-				function playFx() {
-					cKey.play(); 
-				}
+
 			}
 
 
