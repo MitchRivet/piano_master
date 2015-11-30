@@ -12,6 +12,7 @@ PianoMaster.Game = function(game){
 		var line;
 		var controls;
 
+		var testTile;
 		var notes;
 		var success;
 		var backgroundlayerkey;
@@ -26,19 +27,22 @@ PianoMaster.Game = function(game){
 				create: function() {
 						//load map and tile data
 						this.map = this.game.add.tilemap('fur_elise');
-						this.map.addTilesetImage('blueSheet', 'blue_tiles');
-						this.map.addTilesetImage('greenSheet', 'green_tiles');
+						this.map.addTilesetImage('blueSheet', 'blue_tiles', 32, 32, 0, 0, 1);
+						this.map.addTilesetImage('greenSheet', 'green_tiles', 32, 32, 0, 0, 2);
 
 						//create the layers, do I load one or the other first?
 						success = this.backgroundlayer = this.map.createLayer('success');
 						notes = this.toplayer = this.map.createLayer('notes');
-						this.backgroundlayer.resizeWorld();
+						this.toplayer.resizeWorld();
 
 						//set the camera position, starting at the bottom of the tile map, not the window
 						this.camera.y = 6400;
 
 						//figure out what this does
 						// layer.wrap = true;
+
+						testTile = this.add.sprite(32, 32, 'testTile');
+						testTile.fixedToCamera = true;
 
 						//add in the line and the keyboard, set them fixed to the camera
 						line = this.add.sprite(0, 352, 'line');
@@ -60,15 +64,23 @@ PianoMaster.Game = function(game){
 						//link the variable cKey to the keyboard input
 						controls = this.input.keyboard.addKeys({ cKey: Phaser.Keyboard.A });
 
+
 						controls.cKey.onDown.add(controller, this);
 
-						//when cKey is pressed, I want to add a tile to the map that will roll with the camera12
+
+						//for some reason, i am not able to draw notes when the keyboard is pressed
+						//which method should I use? puttile or fill?
+						//can I not run a map altering method here?
+						//am i not correctly accessing the tile id?
+						//was put tile working and i'm just not able to see it?
 						function controller(key)
 						{
 								switch (key.keyCode)
 							{
 								case Phaser.Keyboard.A:
 								cKey.play();
+								newNote = this.map.putTile(1, 5, 175, 'notes');
+								console.log(newNote);
 								break;
 
 								case Phaser.Keyboard.ONE:
@@ -96,6 +108,7 @@ PianoMaster.Game = function(game){
 				//tell the camera to scroll up. will have to findout what these units are to sync with audio.
 				//seems like its scrolling one tile per sec
 				this.camera.y -= 1;
+
 
 
 			}

@@ -13,7 +13,7 @@ PianoMaster.Preloader = function(game) {
 
 				this.load.image('keyboard', '../assets/img/keyboard.png');
 				this.load.image('line', '../assets/img/line_piano_master.png');
-
+				this.load.image('testTile', '../assets/img/testAdd.png'); 
 				this.load.spritesheet('note', '../assets/img/note.png', 82, 98);
 				this.load.spritesheet('button-start', '../assets/img/button-start.png', 401, 143);
 
