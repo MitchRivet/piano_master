@@ -68,9 +68,9 @@ PianoMaster.Game = function(game){
 						controls.cKey.onDown.add(controller, this);
 
 
-						//so i realized that put tile uses tile grid position, not x and y pixels
-						//what I need is a method to get the y location of the current line
-						//tiles will always be snapped to certain grid columns
+						//for adding notes, you may want them not snapped to the grid. you may want those to just appear opaque on the map.
+						//you probably want to make an if statement to find if there is a blue note wether to turn it red, green, or yellow
+						//how can we do that? 
 						function controller(key)
 						{
 								switch (key.keyCode)
