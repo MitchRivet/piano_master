@@ -18,6 +18,7 @@ PianoMaster.Game = function(game){
 		var backgroundlayerkey;
 		var toplayerkey;
 		var currentlayer;
+		var showDebug = true;
 		};
 
 		PianoMaster.Game.prototype = {
@@ -25,15 +26,25 @@ PianoMaster.Game = function(game){
 
 
 				create: function() {
+						this.physics.startSystem(Phaser.Physics.ARCADE);
+
 						//load map and tile data
 						this.map = this.game.add.tilemap('fur_elise');
-						this.map.addTilesetImage('blueSheet', 'blue_tiles', 32, 32, 0, 0, 1);
-						this.map.addTilesetImage('greenSheet', 'green_tiles', 32, 32, 0, 0, 2);
+						this.map.addTilesetImage('blueSheet', 'blue_tiles');
+						this.map.addTilesetImage('greenSheet', 'green_tiles');
 
 						//create the layers, do I load one or the other first?
 						success = this.backgroundlayer = this.map.createLayer('success');
 						notes = this.toplayer = this.map.createLayer('notes');
+						this.add.existing(notes);
 						this.toplayer.resizeWorld();
+
+						this.map.setCollisionBetween(1, 200, true, notes);
+						// this.physics.p2.convertTilemap(map, notes);
+
+
+						notes.debug = true;
+
 
 						//set the camera position, starting at the bottom of the tile map, not the window
 						this.camera.y = 6400;
@@ -41,12 +52,16 @@ PianoMaster.Game = function(game){
 						//figure out what this does
 						// layer.wrap = true;
 
-						testTile = this.add.sprite(32, 32, 'testTile');
-						testTile.fixedToCamera = true;
+						// testTile = this.add.sprite(32, 32, 'testTile');
+						// testTile.fixedToCamera = true;
 
 						//add in the line and the keyboard, set them fixed to the camera
-						line = this.add.sprite(0, 352, 'line');
-						line.fixedToCamera = true;
+						this.line = this.add.sprite(0, 6048, 'line');
+						this.physics.arcade.enable(this.line);
+						// this.line.fixedToCamera = true;
+						console.log(this.line);
+						console.log(notes);
+
 						keyboard = this.add.sprite(0, 640, 'keyboard');
 						keyboard.fixedToCamera = true;
 
@@ -66,11 +81,12 @@ PianoMaster.Game = function(game){
 
 
 						controls.cKey.onDown.add(controller, this);
+						this.camera.follow(this.line);
 
 
 						//for adding notes, you may want them not snapped to the grid. you may want those to just appear opaque on the map.
 						//you probably want to make an if statement to find if there is a blue note wether to turn it red, green, or yellow
-						//how can we do that? 
+						//basically, you should be able to use the same logic as a sprite hitting a block a la mario
 						function controller(key)
 						{
 								switch (key.keyCode)
@@ -94,34 +110,35 @@ PianoMaster.Game = function(game){
 
 						}
 
-					console.log(notes.getTileY(line.y));
-					},
+					// console.log(notes.getTileY(line.y));
 
-			update: function()
-			{
-				//tell the camera to scroll up. will have to findout what these units are to sync with audio.
-				//seems like its scrolling one tile per sec
-				this.camera.y -= 1;
+				},
+
+					update: function()
+				{
+					//tell the camera to scroll up. will have to findout what these units are to sync with audio.
+					//seems like its scrolling one tile per sec
+					this.line.y -= 1;
+					this.physics.arcade.collide(this.line, notes);
+					this.physics.arcade.TILE_BIAS = 40;
+					console.log(this.physics.arcade.overlap(this.line, notes));
+					// console.log(this.physics.arcade.collide(this.line, notes));
 
 
 
-			}
+				},
+
+
 
 
 
 		};
 
-		// PianoMaster.item = {
-			// playFx: function (key) {
-			// 	//switch is very similar to an if statement
-			// 	switch (key.keyCode)
-			// {
-			// 	//in the case that the phaser.keyboard a is pressed
-			// 	case Phaser.Keyboard.A:
-			// 		cKey.play();
-			//
-			// 	}
-			// }
+		PianoMaster.item = {
+		render: function() {
+
+			this.debug.spriteInfo(this.line, 32, 32);
+		}
 //
 // // 			spawnNote: function(game){
 // //
@@ -145,4 +162,4 @@ PianoMaster.Game = function(game){
 // // 			removeNote: function(note) {
 // // 				note.kill();
 // // 				},
-	// };
+	};
