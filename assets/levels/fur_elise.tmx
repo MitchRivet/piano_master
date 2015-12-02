@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="200" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="200" tilewidth="32" tileheight="32" nextobjectid="21">
  <tileset firstgid="1" name="blueSheet" tilewidth="32" tileheight="32" tilecount="128">
   <image source="../blueSheet.png" width="512" height="256"/>
  </tileset>
@@ -414,4 +414,20 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="noteobjects">
+  <object id="4" name="object1" x="545" y="5601" width="32" height="32"/>
+  <object id="5" x="511" y="5568" width="32" height="32"/>
+  <object id="8" x="543" y="5536" width="32" height="32"/>
+  <object id="9" x="511" y="5505" width="32" height="32"/>
+  <object id="10" x="543" y="5472" width="32" height="32"/>
+  <object id="11" x="383" y="5440" width="32" height="32"/>
+  <object id="12" x="480" y="5408" width="32" height="32"/>
+  <object id="14" x="415" y="5376" width="32" height="32"/>
+  <object id="15" x="318" y="5345" width="32" height="32"/>
+  <object id="16" x="319" y="5312" width="32" height="32"/>
+  <object id="17" x="319" y="5247" width="32" height="32"/>
+  <object id="18" x="319" y="5279" width="32" height="32"/>
+  <object id="19" x="318" y="5213" width="32" height="32"/>
+  <object id="20" x="318" y="5183" width="32" height="32"/>
+ </objectgroup>
 </map>
