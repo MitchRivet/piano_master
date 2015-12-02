@@ -52,15 +52,12 @@ PianoMaster.Game = function(game){
 						//figure out what this does
 						// layer.wrap = true;
 
-						// testTile = this.add.sprite(32, 32, 'testTile');
-						// testTile.fixedToCamera = true;
 
 						//add in the line and the keyboard, set them fixed to the camera
-						this.line = this.add.sprite(0, 6048, 'line');
-						this.physics.arcade.enable(this.line);
-						// this.line.fixedToCamera = true;
-						console.log(this.line);
-						console.log(notes);
+						this.line = this.add.sprite(0, 320, 'line');
+						// this.physics.arcade.enable(this.line);
+						this.line.fixedToCamera = true;
+						
 
 						keyboard = this.add.sprite(0, 640, 'keyboard');
 						keyboard.fixedToCamera = true;
@@ -81,7 +78,7 @@ PianoMaster.Game = function(game){
 
 
 						controls.cKey.onDown.add(controller, this);
-						this.camera.follow(this.line);
+						
 
 
 						//for adding notes, you may want them not snapped to the grid. you may want those to just appear opaque on the map.
@@ -93,8 +90,7 @@ PianoMaster.Game = function(game){
 							{
 								case Phaser.Keyboard.A:
 								cKey.play();
-								newNote = this.map.putTile(1, 2, notes.getTileY(line.y), 'notes');
-								console.log(newNote);
+								newNote = this.map.putTile(1, 2, notes.getTileY(this.line.y), 'notes')
 								break;
 
 								case Phaser.Keyboard.ONE:
@@ -118,10 +114,10 @@ PianoMaster.Game = function(game){
 				{
 					//tell the camera to scroll up. will have to findout what these units are to sync with audio.
 					//seems like its scrolling one tile per sec
-					this.line.y -= 1;
-					this.physics.arcade.collide(this.line, notes);
-					this.physics.arcade.TILE_BIAS = 40;
-					console.log(this.physics.arcade.overlap(this.line, notes));
+					this.camera.y -= 1;
+
+				
+// 					console.log(this.physics.arcade.overlap(this.line, notes));
 					// console.log(this.physics.arcade.collide(this.line, notes));
 
 
