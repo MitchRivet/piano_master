@@ -12,7 +12,7 @@ PianoMaster.Game = function(game){
 	// 	var toplayer;
 		var line;
 		var controls;
-
+		var song; 
 		// var testTile;
 // 		var notes;
 // 		var success;
@@ -42,11 +42,8 @@ PianoMaster.Game = function(game){
 						notes = this.map.createLayer('notes');
 						notes.resizeWorld();
 						
-						notesgroup = this.add.group(); 
-						this.map.createFromObjects('noteobjects', 4, 'object1', 0, true, false, notesgroup); 
 						
-						console.log(notesgroup); 
-						//set the the tiles to collide within the tilemap layer (this.notes)
+						// song = this.sound.play('fur_elise'); 
 						this.map.setCollision(72, true, notes);
 						
 						//visualizes the collision tiles
@@ -56,24 +53,24 @@ PianoMaster.Game = function(game){
 						this.camera.y = 6400;
 
 						//add in the line and the keyboard, set them fixed to the camera
-						grid1 = this.add.sprite(32, 6080, 'grid_collide');
-						grid2 = this.add.sprite(64, 6080, 'grid_collide'); 
-						grid3 = this.add.sprite(96, 6080, 'grid_collide'); 
-						grid4 = this.add.sprite(128, 6080, 'grid_collide'); 
-						grid5 = this.add.sprite(160, 6080, 'grid_collide'); 
-						grid6 = this.add.sprite(192, 6080, 'grid_collide'); 
-						grid7 = this.add.sprite(224, 6080, 'grid_collide'); 
-						grid8 = this.add.sprite(256, 6080, 'grid_collide'); 
-						grid9 = this.add.sprite(288, 6080, 'grid_collide'); 
-						grid10 = this.add.sprite(320, 6080, 'grid_collide'); 
-						grid11 = this.add.sprite(352, 6080, 'grid_collide'); 
-						grid12 = this.add.sprite(384, 6080, 'grid_collide'); 
-						grid13 = this.add.sprite(416, 6080, 'grid_collide'); 
-						grid14 = this.add.sprite(448, 6080, 'grid_collide'); 
-						grid15 = this.add.sprite(480, 6080, 'grid_collide'); 
-						grid16 = this.add.sprite(512, 6080, 'grid_collide'); 
-						grid17 = this.add.sprite(544, 6080, 'grid_collide'); 
-						grid18 = this.add.sprite(576, 6080, 'grid_collide'); 
+						grid1 = this.add.sprite(32, 5824, 'grid_collide');
+						grid2 = this.add.sprite(64, 5824, 'grid_collide'); 
+						grid3 = this.add.sprite(96, 5824, 'grid_collide'); 
+						grid4 = this.add.sprite(128, 5824, 'grid_collide'); 
+						grid5 = this.add.sprite(160, 5824, 'grid_collide'); 
+						grid6 = this.add.sprite(192, 5824, 'grid_collide'); 
+						grid7 = this.add.sprite(224, 5824, 'grid_collide'); 
+						grid8 = this.add.sprite(256, 5824, 'grid_collide'); 
+						grid9 = this.add.sprite(288, 5824, 'grid_collide'); 
+						grid10 = this.add.sprite(320, 5824, 'grid_collide'); 
+						grid11 = this.add.sprite(352, 5824, 'grid_collide'); 
+						grid12 = this.add.sprite(384, 5824, 'grid_collide'); 
+						grid13 = this.add.sprite(416, 5824, 'grid_collide'); 
+						grid14 = this.add.sprite(448, 5824, 'grid_collide'); 
+						grid15 = this.add.sprite(480, 5824, 'grid_collide'); 
+						grid16 = this.add.sprite(512, 5824, 'grid_collide'); 
+						grid17 = this.add.sprite(544, 5824, 'grid_collide'); 
+						grid18 = this.add.sprite(576, 5824, 'grid_collide'); 
 						
 						
 						//enable arcade physics on the line
@@ -97,7 +94,8 @@ PianoMaster.Game = function(game){
 						this.physics.enable(grid18); 
 						
 				
-						
+				
+					
 						//don't think we need any of these
 					// 	grid16.body.checkCollision.left = false; 
 // 						// grid16.body.checkCollision.right = false;
@@ -200,11 +198,17 @@ PianoMaster.Game = function(game){
 					grid15.body.y -= 1;
 					grid16.body.y -= 1;
 					grid17.body.y -= 1;
-					grid18.body.y -= 1;
+					grid18.body.y -= 1; 
 					
-					console.log(this.input.keyboard.isDown(Phaser.Keyboard.DOUBLEQUOTE)); 
+					  
+							if (grid17.body.y == 5600) {
+						song = this.sound.play('fur_elise_1'); 
+						}
 					
-				if (this.physics.arcade.collide(grid1, notes) && this.input.keyboard.isDown(Phaser.Keyboard.A)) 
+					// console.log(this.input.keyboard.isDown(Phaser.Keyboard.DOUBLEQUOTE)); 
+					
+					
+					if (this.physics.arcade.collide(grid1, notes) && this.input.keyboard.isDown(Phaser.Keyboard.A)) 
 					{ 
 				
 					newNote = this.map.putTile(1, notes.getTileX(grid1.x), notes.getTileY(grid1.y - 16), notes);
@@ -302,6 +306,7 @@ PianoMaster.Game = function(game){
 					
 					if (this.physics.arcade.collide(grid17, notes) && this.input.keyboard.isDown(Phaser.Keyboard.COLON)) 
 					{
+					console.log(grid17.body.y);
 					newNote = this.map.putTile(1, notes.getTileX(grid17.x), notes.getTileY(grid17.y - 16) , notes);
 					}
 					

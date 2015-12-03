@@ -17,11 +17,12 @@ PianoMaster.Preloader = function(game) {
 				this.load.spritesheet('note', '../assets/img/note.png', 82, 98);
 				this.load.spritesheet('button-start', '../assets/img/button-start.png', 401, 143);
 
-				this.load.tilemap('fur_elise', '../assets/levels/fur_elise_9.json', null, Phaser.Tilemap.TILED_JSON);
+				this.load.tilemap('fur_elise', '../assets/levels/fur_elise_11.json', null, Phaser.Tilemap.TILED_JSON);
 				this.load.image('blue_tiles', '../assets/img/blueSheet.png');
 				this.load.image('green_tiles', '../assets/img/greenSheet.png');
 
-				this.load.audio('cKey', '../assets/audio/piano/c.mp3');
+				this.load.audio('cKey', '../assets/audio/piano/c.mp3'); 
+				this.load.audio('fur_elise_1', '../assets/audio/songs/furelise_sec1_60bpm.mp3'); 
 				},
 
 			create: function(){
