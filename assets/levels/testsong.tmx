@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="17" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Notes" tilewidth="32" tileheight="32" tilecount="128">
+  <image source="../UIpack/Spritesheet/blueSheet.png" width="512" height="256"/>
+ </tileset>
+ <layer name="TestSong" width="17" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztl1EOgzAMQzle73+i/U7RkrjJY0xrLCEKpG5qWkyu61wsIPYUDpU/41B4shiFRx2H0E0dT+Eg9FFiuvpUtLPHYFDFp/Wkrq2dfUZ8b734yh5YTpvkUHRUOKg8lP7RmN58vHsZMn2677XC4+VD+SDhA5W9OhgMBoN7seud9pn1ctVzs2sVBEeUz65fEb5G+SPttZ1/739BZ57LnJ/GHXlU6qOupsu0iRrNclf6RzGV+iOKe7ou3fWKiCPyF6//t/Qj9Ce079av1Prr7LmTfOMdhIcQ+KU8Xh35OEE=
+  </data>
+ </layer>
+</map>
