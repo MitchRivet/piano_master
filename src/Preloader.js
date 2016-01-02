@@ -11,12 +11,12 @@ PianoMaster.Preloader = function(game) {
 				this.preloadBar = this.add.sprite((PianoMaster.GAME_WIDTH)/2, (PianoMaster.GAME_HEIGHT-27)/2, 'preloaderBar');
 				this.load.setPreloadSprite(this.preloadBar);
 
-				this.load.image('keyboard', '../assets/img/pianokeys_lettered.png');
+				this.load.image('keyboard', '/assets/img/pianokeys_lettered.png');
 				this.load.image('grid_collide', '../assets/img/grid_collide-01.png');
 				this.load.image('testTile', '../assets/img/testAdd.png');
-				this.load.image('logo', '../assets/img/PIANO_MASTER_LOGO.png')
+				this.load.image('logo', '/assets/img/PIANO_MASTER_LOGO.png')
 				this.load.spritesheet('note', '../assets/img/note.png', 82, 98);
-				this.load.spritesheet('button-start', '../assets/img/START_BUTTON.png', 401, 143);
+				this.load.spritesheet('button-start', '/assets/img/START_BUTTON.png', 401, 143);
 
 				this.load.tilemap('fur_elise', '../assets/levels/fur_elise_11.json', null, Phaser.Tilemap.TILED_JSON);
 				this.load.image('blue_tiles', '../assets/img/blueSheet.png');
